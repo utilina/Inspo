@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		95D87A3F2556E667001A7FFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D87A3E2556E667001A7FFD /* AppDelegate.swift */; };
 		95D87A412556E667001A7FFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D87A402556E667001A7FFD /* SceneDelegate.swift */; };
-		95D87A432556E667001A7FFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D87A422556E667001A7FFD /* ViewController.swift */; };
 		95D87A462556E667001A7FFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95D87A442556E667001A7FFD /* Main.storyboard */; };
 		95D87A482556E66A001A7FFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95D87A472556E66A001A7FFD /* Assets.xcassets */; };
 		95D87A4B2556E66A001A7FFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95D87A492556E66A001A7FFD /* LaunchScreen.storyboard */; };
+		95D87A572556E7C3001A7FFD /* InspoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D87A562556E7C3001A7FFD /* InspoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		95D87A3B2556E667001A7FFD /* Inspo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inspo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95D87A3E2556E667001A7FFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95D87A402556E667001A7FFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		95D87A422556E667001A7FFD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		95D87A452556E667001A7FFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95D87A472556E66A001A7FFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95D87A4A2556E66A001A7FFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95D87A4C2556E66A001A7FFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95D87A562556E7C3001A7FFD /* InspoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +58,29 @@
 			children = (
 				95D87A3E2556E667001A7FFD /* AppDelegate.swift */,
 				95D87A402556E667001A7FFD /* SceneDelegate.swift */,
-				95D87A422556E667001A7FFD /* ViewController.swift */,
-				95D87A442556E667001A7FFD /* Main.storyboard */,
+				95D87A592556E7C7001A7FFD /* Controllers */,
+				95D87A542556E7A6001A7FFD /* Views */,
 				95D87A472556E66A001A7FFD /* Assets.xcassets */,
 				95D87A492556E66A001A7FFD /* LaunchScreen.storyboard */,
 				95D87A4C2556E66A001A7FFD /* Info.plist */,
 			);
 			path = Inspo;
+			sourceTree = "<group>";
+		};
+		95D87A542556E7A6001A7FFD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				95D87A442556E667001A7FFD /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		95D87A592556E7C7001A7FFD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				95D87A562556E7C3001A7FFD /* InspoTableViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +153,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95D87A432556E667001A7FFD /* ViewController.swift in Sources */,
 				95D87A3F2556E667001A7FFD /* AppDelegate.swift in Sources */,
+				95D87A572556E7C3001A7FFD /* InspoTableViewController.swift in Sources */,
 				95D87A412556E667001A7FFD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
