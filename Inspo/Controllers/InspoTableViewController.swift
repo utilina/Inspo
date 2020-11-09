@@ -9,7 +9,7 @@ import UIKit
 import StoreKit
 
 class InspoTableViewController: UITableViewController, SKPaymentTransactionObserver {
-
+    
     
     
     let productID = ""
@@ -31,7 +31,7 @@ class InspoTableViewController: UITableViewController, SKPaymentTransactionObser
         "Единственный способ сделать что-то очень хорошо – любить то, что ты делаешь. - Стив Джобс",
         "Перед тем как карабкаться на лестницу успеха, убедитесь, что она прислонена к стене того здания, что вам нужно. - Стивен Кови"
     ]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         SKPaymentQueue.default().add(self)
@@ -40,14 +40,19 @@ class InspoTableViewController: UITableViewController, SKPaymentTransactionObser
             showPremiumQuotes()
         }
     }
-
+    
     // MARK: - Table view data source
-
-
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return quotesToShow.count + 1
+        if isPurchased() {
+            return quotesToShow.count
+        } else {
+            return quotesToShow.count + 1
+        }
+        
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -91,7 +96,7 @@ class InspoTableViewController: UITableViewController, SKPaymentTransactionObser
                 //Успешная транзакция
                 SKPaymentQueue.default().finishTransaction(transaction)
                 showPremiumQuotes()
-                UserDefaults.standard.set(true, forKey: productID)
+                
                 
                 print("S")
             } else if transaction.transactionState == .failed {
@@ -102,12 +107,18 @@ class InspoTableViewController: UITableViewController, SKPaymentTransactionObser
                     let errorDescription = error.localizedDescription
                     print("Transaction failed due to error:\(errorDescription)")
                 }
+            } else if transaction.transactionState == .restored {
+                showPremiumQuotes()
+                SKPaymentQueue.default().finishTransaction(transaction)
+                navigationItem.setRightBarButton(nil, animated: true)
             }
         }
     }
     
     // Отображаем премиумные цитаты
     func showPremiumQuotes() {
+        
+        UserDefaults.standard.set(true, forKey: productID)
         quotesToShow.append(contentsOf: premiumQuotes)
         tableView.reloadData()
     }
@@ -117,5 +128,10 @@ class InspoTableViewController: UITableViewController, SKPaymentTransactionObser
         
         return purchaseStatus ? true : false
     }
-
+    
+    
+    @IBAction func restoreButtonPressed(_ sender: Any) {
+        SKPaymentQueue.default().restoreCompletedTransactions()
+    }
+    
 }

@@ -33,7 +33,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="InspoQuote" id="JsI-HX-9Xb">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="JF4-aj-XAE"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="JF4-aj-XAE">
+                            <connections>
+                                <action selector="restoreButtonPressed:" destination="pDM-na-GN1" id="p3M-Hr-koz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s62-mD-52k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
