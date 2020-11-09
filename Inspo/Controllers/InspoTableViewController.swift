@@ -35,6 +35,10 @@ class InspoTableViewController: UITableViewController, SKPaymentTransactionObser
     override func viewDidLoad() {
         super.viewDidLoad()
         SKPaymentQueue.default().add(self)
+        
+        if isPurchased() {
+            showPremiumQuotes()
+        }
     }
 
     // MARK: - Table view data source
@@ -80,11 +84,15 @@ class InspoTableViewController: UITableViewController, SKPaymentTransactionObser
         }
     }
     
+    //Наблюдаем за транзакцией
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             if transaction.transactionState == .purchased {
-                
+                //Успешная транзакция
                 SKPaymentQueue.default().finishTransaction(transaction)
+                showPremiumQuotes()
+                UserDefaults.standard.set(true, forKey: productID)
+                
                 print("S")
             } else if transaction.transactionState == .failed {
                 SKPaymentQueue.default().finishTransaction(transaction)
@@ -96,6 +104,18 @@ class InspoTableViewController: UITableViewController, SKPaymentTransactionObser
                 }
             }
         }
+    }
+    
+    // Отображаем премиумные цитаты
+    func showPremiumQuotes() {
+        quotesToShow.append(contentsOf: premiumQuotes)
+        tableView.reloadData()
+    }
+    
+    func isPurchased() -> Bool {
+        let purchaseStatus = UserDefaults.standard.bool(forKey: productID)
+        
+        return purchaseStatus ? true : false
     }
 
 }
